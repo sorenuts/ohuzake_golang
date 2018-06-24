@@ -11,9 +11,9 @@ import(
 var StrFirstCall = []string{"V!","a!","n!","i!","l!","la!"}
 var StrSecondCall = []string{"バーニラ","バニラ","バニラで"}
 //コールの順番の定義
-var SequenceStage3 = []int{0, 1, 0}
-var SequenceStage4 = []int{0, 1}
-var SequenceStage6 = []int{0, 2}
+var SequenceStage3 = []int{1, 2, 1}
+var SequenceStage4 = []int{1, 2}
+var SequenceStage6 = []int{1, 3}
 
 func main(){
 	rand.Seed(time.Now().UnixNano())
@@ -73,7 +73,7 @@ func stage3(){
 		if len(sequence) == len(SequenceStage3){
 			sequence = sequence[1:]
 		}
-		sequence = append(sequence, x)
+		sequence = append(sequence, x+1)
 	}
 	
 	fmt.Println("\n求人！")
@@ -85,6 +85,7 @@ func stage3(){
 func stage4(){
 	//x:乱数の格納, sequence:直近2回の乱数の履歴
 	x, sequence := 0, make([]int,2)
+	fmt.Println(sequence)
 
 	for reflect.DeepEqual(sequence, SequenceStage4) == false{
 		x = rand.Intn(len(StrSecondCall))
@@ -92,7 +93,7 @@ func stage4(){
 		if len(sequence) == len(SequenceStage4){
 			sequence = sequence[1:]
 		}
-		sequence = append(sequence, x)
+		sequence = append(sequence, x+1)
 	}
 	
 	fmt.Println("\n高〜収〜入〜！")
@@ -112,7 +113,7 @@ func stage6(){
 		if len(sequence) == len(SequenceStage6){
 			sequence = sequence[1:]
 		}
-		sequence = append(sequence, x)
+		sequence = append(sequence, x+1)
 	}
 	
 	fmt.Println("\nアルバイト〜！")
